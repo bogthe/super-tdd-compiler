@@ -1,0 +1,9 @@
+{
+  "name": "my-compiler",
+  "version": "1.0.0",
+  "description": "My attempt at the super tiny compiler",
+  "main": "my-compiler.js",
+  "keywords": [],
+  "author": "Bogdan Stolojan",
+  "license": "ISC"
+}
