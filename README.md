@@ -1,4 +1,4 @@
-# Understanding the Tiny Super Compiler
+# Understanding the Super Tiny Compiler
 This is just a simple learning project to understand THE SUPER TINY COMPILER! With the added benefit of unit tests.
 
 [Please check out the original here! NOW!](https://github.com/thejameskyle/the-super-tiny-compiler)
@@ -23,4 +23,4 @@ However I believe you do have to go through the tiny-super-compiler code at leas
 Feel free to improve on the project however you see fit! You have my full trust :)!  
 
 ## Credits
-All credits for the tiny super compiler go to: the man, the myth, the legend [James Kyle](http://thejameskyle.com/)
+All credits for the super tiny compiler go to: the man, the myth, the legend [James Kyle](http://thejameskyle.com/)
