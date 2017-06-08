@@ -1,7 +1,7 @@
 {
   "name": "my-compiler",
   "version": "1.0.0",
-  "description": "My attempt at the super tiny compiler",
+  "description": "My attempt at the tiny super compiler",
   "main": "my-compiler.js",
   "keywords": [],
   "author": "Bogdan Stolojan",

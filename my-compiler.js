@@ -19,6 +19,8 @@
 function tokenizer(input) {
     let current = 0;
     let tokens = [];
+    let WHITESPACE = /\s/;
+
 
     while (current < input.length) {
         let char = input[current];
@@ -33,12 +35,17 @@ function tokenizer(input) {
             continue;
         }
 
-        if(char === ')'){
+        if (char === ')') {
             tokens.push({
                 type: 'paren',
                 value: ')'
             });
 
+            current++;
+            continue;
+        }
+
+        if (WHITESPACE.test(char)) {
             current++;
             continue;
         }
