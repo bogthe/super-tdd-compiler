@@ -7,10 +7,18 @@ This is just a simple learning project to understand THE SUPER TINY COMPILER! Wi
 # Run tests
 All tests are found inside the `tests` folder.
 
-To run use `node tests\tokenizer.spec.js`
+To run, choose one of the compiler components from below:
+- `node tests\tokenizer.spec.js`
+- `node tests\parser.spec.js`
+- `node tests\traverser.spec.js`
 
 Test arrangement is quite simple and uses [npm assert](https://www.npmjs.com/package/assert) 
 I'm would like to add karma & jasmine support, sometime in the **future.**
+
+## Test importance
+I'm sure you would like to understand this compiler mombo-jumbo as fast as possible and then feel smart for the rest of the day!
+
+So why not **try this:** take each compiler component and go through each test first! I believe it's a thorough and bite-sized approach to learning a fairly complex concept!
 
 ---
 
