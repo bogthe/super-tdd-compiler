@@ -76,8 +76,8 @@ const testObject = {
 
         assert.deepStrictEqual(tokenizer(input), expected, "Should create the tokens for a add function");
     },
-    
-    fullConcatTest: function(){
+
+    fullConcatTest: function () {
         let input = 'concat "hello" "world"';
         let expected = [
             { type: 'name', value: 'concat' },
