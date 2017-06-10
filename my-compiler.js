@@ -186,8 +186,42 @@ function traverser(ast, visitor) {
     traverseNode(ast, null);
 }
 
+function transformer(ast) {
+    let newAst = {
+        type: 'Program',
+        body: []
+    }
+
+    ast._context = newAst.body;
+
+    traverser(ast, {
+        CallExpression: {
+            enter(node, parent) {
+                let expression = {
+                    type: 'CallExpression',
+                    calle: {
+                        type: 'Identifier',
+                        name: node.name
+                    },
+                    arguments: []
+                }
+
+                expression = {
+                    type: 'ExpressionStatement',
+                    expression: expression
+                };
+
+                parent._context.push(expression);
+            }
+        }
+    });
+
+    return newAst;
+}
+
 module.exports = {
     tokenizer,
     parser,
-    traverser
+    traverser,
+    transformer
 };
