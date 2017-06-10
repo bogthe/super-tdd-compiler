@@ -107,7 +107,28 @@ function parser(tokens) {
             return { type: 'StringLiteral', value: token.value };
         }
 
-        throw new SyntaxError("Type not recognized!");
+        if (token.type === 'paren' && token.value === '(') {
+            token = tokens[++current];
+            let node = {
+                type: 'CallExpression',
+                name: token.value,
+                params: []
+            };
+
+            token[++current];
+            while (
+                token.type !== 'paren' ||
+                (token.type === 'paren' && token.value === '(')
+            ) {
+                node.params.push(walk());
+                token = tokens[current];
+            }
+
+            current++;
+            return node;
+        }
+
+        throw new SyntaxError(`Type not recognized! Type:${token.type} / ${token.value}`);
     }
 
     let ast = {
