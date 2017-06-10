@@ -106,6 +106,8 @@ function parser(tokens) {
             current++;
             return { type: 'StringLiteral', value: token.value };
         }
+
+        throw new SyntaxError("Type not recognized!");
     }
 
     let ast = {

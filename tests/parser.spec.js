@@ -69,6 +69,12 @@ let testObject = {
         );
 
         assert.deepStrictEqual(parser(input), expected, "Should combine strings and number literals properly");
+    },
+
+    unknownTypes: function () {
+        let input = [{ type: 'unknown', value: 'yes I am' }];
+
+        assert.throws(function () { parser(input); }, SyntaxError);
     }
 }
 
