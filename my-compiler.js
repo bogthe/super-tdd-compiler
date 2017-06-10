@@ -96,29 +96,24 @@ function parser(tokens) {
     let current = 0;
 
     function walk() {
-        if (tokens.length == 0)
-            return [];
-        
-        let body = [];
-        while (current < tokens.length) {
-            let token = tokens[current];
-
-            if (token.type === 'number') {
-                body.push({ type: 'NumberLiteral', value: token.value });
-                current++;
-            }
-
-            if (token.type === 'string') {
-                body.push({ type: 'StringLiteral', value: token.value });
-                current++;
-            }
+        let token = tokens[current];
+        if (token.type === 'number') {
+            current++;
+            return { type: 'NumberLiteral', value: token.value };
         }
 
-        return body;
+        if (token.type === 'string') {
+            current++;
+            return { type: 'StringLiteral', value: token.value };
+        }
     }
 
     let ast = {
-        type: 'Program', body: walk()
+        type: 'Program', body: []
+    }
+
+    while (current < tokens.length) {
+        ast.body.push(walk());
     }
 
     return ast;
