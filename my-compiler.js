@@ -74,7 +74,7 @@ function tokenizer(input) {
                 value += char;
                 char = input[++current];
 
-                if(current >= input.length){
+                if (current >= input.length) {
                     throw new SyntaxError("String does not terminate!");
                 }
             }
@@ -92,6 +92,39 @@ function tokenizer(input) {
     return tokens;
 }
 
+function parser(tokens) {
+    let current = 0;
+
+    function walk() {
+        if (tokens.length == 0)
+            return [];
+        
+        let body = [];
+        while (current < tokens.length) {
+            let token = tokens[current];
+
+            if (token.type === 'number') {
+                body.push({ type: 'NumberLiteral', value: token.value });
+                current++;
+            }
+
+            if (token.type === 'string') {
+                body.push({ type: 'StringLiteral', value: token.value });
+                current++;
+            }
+        }
+
+        return body;
+    }
+
+    let ast = {
+        type: 'Program', body: walk()
+    }
+
+    return ast;
+}
+
 module.exports = {
-    tokenizer
+    tokenizer,
+    parser
 };
