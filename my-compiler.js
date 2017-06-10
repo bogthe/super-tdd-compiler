@@ -1,5 +1,8 @@
 'use strict';
 
+/**************
+** TOKENIZER **
+**************/
 function tokenizer(input) {
     let current = 0;
     let tokens = [];
@@ -92,6 +95,9 @@ function tokenizer(input) {
     return tokens;
 }
 
+/**************
+*** PARSER  ***
+**************/
 function parser(tokens) {
     let current = 0;
 
@@ -142,7 +148,46 @@ function parser(tokens) {
     return ast;
 }
 
+/**************
+** TRAVERSER **
+**************/
+function traverser(ast, visitor) {
+    function traverseChildrenArray(array, parent) {
+        array.forEach((child) => {
+            traverseNode(child, parent);
+        });
+    }
+
+    function traverseNode(node, parent) {
+        let method = visitor[node.type];
+
+        if (method && method.enter) {
+            method.enter(node, parent);
+        }
+
+        switch (node.type) {
+            case 'Program':
+                traverseChildrenArray(node.body, node);
+                break;
+
+            case 'CallExpression':
+                traverseChildrenArray(node.params, node);
+                break;
+
+            case 'NumberLiteral':
+            case 'StringLiteral':
+                break;
+
+            default:
+                throw new SyntaxError(`Unrecognized node type:${node.type}.`);
+        }
+    }
+
+    traverseNode(ast, null);
+}
+
 module.exports = {
     tokenizer,
-    parser
+    parser,
+    traverser
 };
