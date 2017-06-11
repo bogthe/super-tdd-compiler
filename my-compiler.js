@@ -235,6 +235,9 @@ function transformer(ast) {
     return newAst;
 }
 
+/**************
+CODE*GENERATOR*
+**************/
 function codeGenerator(node) {
     switch (node.type) {
         case 'Program':
@@ -258,10 +261,22 @@ function codeGenerator(node) {
     }
 }
 
+/**************
+**  COMPILER **
+**************/
+function compiler(input){
+    let tokens = tokenizer(input);
+    let ast = parser(tokens);
+    let finalAst = transformer(ast);
+
+    return codeGenerator(finalAst);
+}
+
 module.exports = {
     tokenizer,
     parser,
     traverser,
     transformer,
-    codeGenerator
+    codeGenerator,
+    compiler
 };
