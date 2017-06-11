@@ -206,12 +206,25 @@ function transformer(ast) {
                     arguments: []
                 }
 
-                expression = {
-                    type: 'ExpressionStatement',
-                    expression: expression
-                };
+                node._context = expression.arguments;
+                if (parent.type !== 'CallExpression') {
+                    expression = {
+                        type: 'ExpressionStatement',
+                        expression: expression
+                    };
+                }
 
                 parent._context.push(expression);
+            }
+        },
+        NumberLiteral: {
+            enter(node, parent) {
+                parent._context.push(node);
+            }
+        },
+        StringLiteral: {
+            enter(node, parent) {
+                parent._context.push(node);
             }
         }
     });

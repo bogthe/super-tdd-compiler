@@ -11,6 +11,7 @@ To run, choose one of the compiler components from below:
 - `node tests\tokenizer.spec.js`
 - `node tests\parser.spec.js`
 - `node tests\traverser.spec.js`
+- `node tests\transformer.spec.js`
 
 Test arrangement is quite simple and uses [npm assert](https://www.npmjs.com/package/assert) 
 I'm would like to add karma & jasmine support, sometime in the **future.**
