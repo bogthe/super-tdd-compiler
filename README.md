@@ -1,6 +1,11 @@
 # Understanding the Super Tiny Compiler
 This is just a simple learning project to understand THE SUPER TINY COMPILER! With the added benefit of unit tests.
 
+# Check the website
+See the inner-working (guts) of the compiler and how it works!
+[Repo here.](https://github.com/bogthe/web-compiler)
+
+## Original project
 [Please check out the original here! NOW!](https://github.com/thejameskyle/the-super-tiny-compiler)
 
 ---
