@@ -29,6 +29,11 @@ So why not **try this:** take each compiler component and go through each test f
 
 ---
 
+## Supported languages
+Currently the only language syntax which is supported is: LISP -> C.
+
+*It only supports method names with numbers and strings as paramteres*
+
 ## Why should I care? V2.0
 In this version I'll try and take a more TDD approach (a very light one). This may mean it will be easier for you to understand how the compiler works, step by step (test by test ;) ). 
 
